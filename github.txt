@@ -1,3 +1,8 @@
 git remote add origin https://github.com/bengraham-B/todo-app-mern.git
 git branch -M main
 git push -u origin main
+
+
+git remote add origin https://github.com/bengraham-B/todo-app-mern.git
+git branch -M auth
+git push -u origin auth
