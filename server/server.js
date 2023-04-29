@@ -1,8 +1,18 @@
 require("dotenv").config()
 const express = require('express')
+const cors = require('cors')
 const mongoose = require("mongoose")
+const authRoutes = require('./routes/authRoutes')
+
 
 const app = express()
+
+// middleware
+app.use(express.json())
+
+app.use(cors({
+    origin: 'http://192.168.101.48:3007'
+}))
 
 //* Importing the Todo routes
 const todoRoutes = require('./routes/todo.routes.js')
@@ -18,6 +28,8 @@ app.use((req, res, next) => {
 
 //* Routes - Basic Routes are working.
 app.use('/api/todos', todoRoutes)
+
+app.use(authRoutes)
 
 
 //* Connecting to MongoDB.

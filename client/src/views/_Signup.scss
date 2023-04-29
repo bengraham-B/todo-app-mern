@@ -1,0 +1,44 @@
+#Signup {
+    width: 100%;
+    height: 100vh;
+    background: red;
+    @include flex;
+
+    .container {
+        width: 100%;
+        height: 100%;
+        @include flex;
+        flex-direction: column;
+        margin: 50px;
+    }
+
+    .form-container {
+        width: 400px;
+        height: 600px;
+        background: greenyellow;
+
+        .title-container {
+            // width: 100%;
+            // @include flex;
+        }
+        
+        .email-container {
+            // width: 100%;
+            // @include flex;
+            // flex-direction: column;
+        }
+
+        .password-container {
+            // width: 100%;
+            // @include flex;
+            // flex-direction: column;
+        }
+
+        .btn-container {
+            // width: 100%;
+            // @include flex;
+
+        }
+
+    }
+}

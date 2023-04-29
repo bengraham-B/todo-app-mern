@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { Route, Routes } from "react-router-dom";
+
 
 //& Importing SASS style sheets
 import "./styles/styles.css"
 
-//^ Importing Components
-import Header from './components/Header/Header'
-import AddTodo from './components/AddTodo/AddTodo'
-import TodoElement from './components/TodoElement/TodoElement'
+//^ Importing Views
+import Home from './views/Home';
+import Login from './views/Login';
+import _Signup from './views/_Signup';
 
 export default function App() {
 
@@ -15,19 +17,17 @@ export default function App() {
 
 	//^ Importing the array from REDUX.
 
-	const [response, setResponse] = useState()
 
-	const dispatch = useDispatch()
+
 
 	//^ Fetching todos from the API
 	useEffect(() => {
 		fetch("/api/todos")
 		.then(res => res.json())
 		.then((data) => {
-		setResponse(data)
+
 		console.log(data.todosGet)
 		console.log(data.todosGet[0])
-
 	  })
 
 	},[refreshCount_Redux])
@@ -35,20 +35,14 @@ export default function App() {
     	<div id="App">
 
 			<div className="header-container">
-				<Header/>
+				{/* <Header/> */}
 			</div>
 
-			<div className="add-todo-container">
-				<AddTodo/>
-			</div>
-
-			<div className="todo-element-container">
-				{response?.todosGet && response.todosGet.map((todo) => (
-					<TodoElement details={todo.details} created={todo.created} _id={todo._id}/>
-					
-				))}
-
-			</div>
+			<Routes>
+				<Route path="/" element={<Home/>} />
+				<Route path="/login" element={<Login/>}/>
+				<Route path="/signup" element={<_Signup/>}/>
+			</Routes>
 
 		</div>
   	)

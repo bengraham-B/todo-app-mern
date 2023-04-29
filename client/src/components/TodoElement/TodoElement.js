@@ -18,8 +18,6 @@ export default function TodoElement(props) {
         console.log(_id)
 
         const res = await fetch(`/api/todos/${_id}`, {method: "DELETE"})
-    
-        const json = await res.json()
         dispatch(refresh())
 
         console.log(res)
